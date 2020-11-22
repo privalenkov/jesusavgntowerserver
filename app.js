@@ -41,7 +41,7 @@ function loadFromFile() {
     const res = fs.readFileSync('../hesusappdata').toString();
     return parseInt(res);
   } catch {
-    return 50.000;
+    return 0.000;
   }
 }
 
@@ -85,13 +85,13 @@ const updateUserCount = throttle(() => {
 
 io.on('connection', (socket) => {
   const clickInc = throttle((count) => {
-    clickCount += 5;
+    clickCount += 0.005;
     updateClick(socket);
   }, 50);
 
   const clickDec = throttle((count) => {
     if(clickCount <= 0) return;
-    clickCount -= 5;
+    clickCount -= 0.005;
     updateClick(socket);
   }, 50);
 
