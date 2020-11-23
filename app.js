@@ -85,13 +85,13 @@ const updateUserCount = throttle(() => {
 
 io.on('connection', (socket) => {
   const clickInc = throttle((count) => {
-    clickCount += 0.005;
+    clickCount += 0.001;
     updateClick(socket);
   }, 50);
 
   const clickDec = throttle((count) => {
     if(clickCount <= 0) return;
-    clickCount -= 0.005;
+    clickCount -= 0.001;
     updateClick(socket);
   }, 50);
 
