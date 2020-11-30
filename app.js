@@ -127,7 +127,6 @@ io.on('connection', (socket) => {
 });
 
 setInterval(() => {
-  console.log(counter)
   if(clickCount > 0) {
     if(!autoDecBool && counter <= 360) {
       counter++
