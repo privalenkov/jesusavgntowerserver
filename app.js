@@ -11,8 +11,10 @@ const httpsOptions = {
 const server = require('https').createServer(httpsOptions, app);
 
 const io = require('socket.io')(server, {
-  origins: '*//jesusavgntower.ru:*'
+  origins: '*//*:*'
 });
+
+const currentVer = 'JQaZmv15'
 
 server.listen(443);
 require('http').createServer(app).listen(80);
@@ -87,13 +89,18 @@ const updateClickAuto = throttle(() => {
 }, 200);
 
 const updateUserCount = throttle(() => {
+  
   io.sockets.emit('updateUserCount', io.engine.clientsCount);
 }, 500);
 let autoDecBool = false
 let counter = 0
-io.on('connection', (socket) => {
-  
 
+io.on('connection', (socket) => {
+
+  socket.on('frontVer', (ver) => {
+    console.log(ver)
+    if(ver !== currentVer) socket.disconnect()
+  });
 
   const clickInc = throttle((count) => {
     clickCount += 0.001;
