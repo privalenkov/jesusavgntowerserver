@@ -11,7 +11,7 @@ const httpsOptions = {
 const server = require('https').createServer(httpsOptions, app);
 
 const io = require('socket.io')(server, {
-  origins: '*//*:*'
+  origins: '*//jesusavgntower.ru:*'
 });
 
 const currentVer = 'JQaZmv15'
