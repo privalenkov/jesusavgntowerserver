@@ -9,7 +9,10 @@ const httpsOptions = {
 };
 
 const server = require('https').createServer(httpsOptions, app);
-const io = require('socket.io')(server);
+
+const io = require('socket.io')(server, {
+  origins: '*//jesusavgntower.ru:*'
+});
 
 server.listen(443);
 require('http').createServer(app).listen(80);
