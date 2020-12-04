@@ -15,10 +15,10 @@ const domen = 'jesusavgntower.ru'
 
 
 const io = require('socket.io')(server, {
-  origins: `*//${domen}:*`
+  origins: `*//*:*`
 });
 
-const currentVer = 19
+const currentVer = 20
 
 server.listen(443);
 require('http').createServer(app).listen(80);
@@ -104,8 +104,7 @@ io.on('connection', (socket) => {
 
   socket.on('frontVer', (ver) => {
     if(ver !== currentVer) {
-      io.sockets.emit('verCheck');
-      // socket.disconnect()
+      socket.disconnect()
     }
   });
 
