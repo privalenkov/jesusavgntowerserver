@@ -143,7 +143,7 @@ setInterval(() => {
     }
     if(counter >= 360) { 
       if(clickCount <= 0) return
-      clickCount -= 0.01;
+      clickCount -= 0.1;
       updateClickAuto()
       if(clickCount < 0) clickCount = 0
     }
