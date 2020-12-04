@@ -14,7 +14,7 @@ const io = require('socket.io')(server, {
   origins: '*//jesusavgntower.ru:*'
 });
 
-const currentVer = 'JQaCCv16'
+const currentVer = 'ddAaCCv17'
 
 server.listen(443);
 require('http').createServer(app).listen(80);
