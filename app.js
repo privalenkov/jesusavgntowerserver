@@ -12,11 +12,13 @@ const server = require('https').createServer(httpsOptions, app);
 
 const domen = 'jesusavgntower.ru'
 
+
+
 const io = require('socket.io')(server, {
   origins: `*//${domen}:*`
 });
 
-const currentVer = 'aaaAaCv18'
+const currentVer = 19
 
 server.listen(443);
 require('http').createServer(app).listen(80);
@@ -99,8 +101,12 @@ let counter = 0
 
 io.on('connection', (socket) => {
 
+
   socket.on('frontVer', (ver) => {
-    if(ver !== currentVer) socket.disconnect()
+    if(ver !== currentVer) {
+      io.sockets.emit('verCheck');
+      // socket.disconnect()
+    }
   });
 
   const clickInc = throttle((count) => {
