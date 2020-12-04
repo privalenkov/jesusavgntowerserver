@@ -10,11 +10,13 @@ const httpsOptions = {
 
 const server = require('https').createServer(httpsOptions, app);
 
+const domen = 'jesusavgntower.ru'
+
 const io = require('socket.io')(server, {
-  origins: '*//jesusavgntower.ru:*'
+  origins: `*//${domen}:*`
 });
 
-const currentVer = 'ddAaCCv17'
+const currentVer = 'aaaAaCv18'
 
 server.listen(443);
 require('http').createServer(app).listen(80);
@@ -98,7 +100,6 @@ let counter = 0
 io.on('connection', (socket) => {
 
   socket.on('frontVer', (ver) => {
-    console.log(ver)
     if(ver !== currentVer) socket.disconnect()
   });
 
