@@ -18,7 +18,7 @@ const io = require('socket.io')(server, {
   origins: `*//*:*`
 });
 
-const currentVer = 20
+const currentVer = 21
 
 server.listen(443);
 require('http').createServer(app).listen(80);
